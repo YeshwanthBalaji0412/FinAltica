@@ -1,0 +1,81 @@
+/* Root styles */
+.root {
+    -fx-font-family: "Roboto", "Segoe UI", sans-serif;
+    -fx-background-color: #F5F5F5;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #1976D2;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #1565C0;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Summary metric cards */
+VBox {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+/* Notification labels */
+#notificationLabel {
+    -fx-font-size: 14px;
+}
+
+#notificationLabel:success {
+    -fx-text-fill: #4CAF50;
+}
+
+#notificationLabel:error {
+    -fx-text-fill: #F44336;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
+/* ComboBox and TextField */
+.combo-box, .text-field, .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.combo-box:hover, .text-field:hover, .date-picker:hover {
+    -fx-border-color: #1976D2;
+}

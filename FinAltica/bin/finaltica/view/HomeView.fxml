@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="finaltica.controller.HomeController" stylesheets="@../styles.css">
+    <content>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            <!-- Welcome Section -->
+            <HBox alignment="CENTER" spacing="15">
+                <Label fx:id="welcomeLabel" text="Welcome, User!" styleClass="label" 
+                       style="-fx-font-size: 24px; -fx-text-fill: #1976D2;"/>
+                <Button text="🔄" onAction="#refreshData" styleClass="button"/>
+            </HBox>
+            
+            <Label fx:id="notificationLabel" text="" styleClass="label" visible="false"/>
+            
+            <!-- Summary Cards -->
+            <HBox spacing="15" alignment="CENTER">
+                <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-min-width: 220;">
+                    <Label text="Current Balance" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                    <Label fx:id="balanceLabel" text="0.0" styleClass="label" style="-fx-font-size: 20px;"/>
+                </VBox>
+                <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-min-width: 220;">
+                    <Label text="Total Income" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #4CAF50;"/>
+                    <Label fx:id="incomeLabel" text="0.0" styleClass="label" style="-fx-font-size: 20px;"/>
+                </VBox>
+                <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-min-width: 220;">
+                    <Label text="Total Expense" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #F44336;"/>
+                    <Label fx:id="expenseLabel" text="0.0" styleClass="label" style="-fx-font-size: 20px;"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Charts Section -->
+            <HBox spacing="20">
+                <!-- Bar Chart for Income vs Expenses -->
+                <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+                    <Label text="Income vs Expenses Comparison" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                    <BarChart fx:id="barChart" legendVisible="true" prefHeight="300" prefWidth="400">
+                        <xAxis>
+                            <CategoryAxis label="Type" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Amount" />
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+                
+                <!-- Pie Chart for Expense Categories -->
+                <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+                    <Label text="Expense Categories" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                    <PieChart fx:id="pieChart" legendVisible="true" prefHeight="300" prefWidth="400" />
+                </VBox>
+            </HBox>
+            
+            <!-- Filter Section -->
+            <TitledPane text="Filters" expanded="false">
+                <VBox spacing="15" style="-fx-padding: 10;">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <VBox spacing="5">
+                            <Label text="Filter by Date Range" styleClass="label"/>
+                            <HBox spacing="10">
+                                <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+                                <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Filter by Type" styleClass="label"/>
+                            <ComboBox fx:id="typeFilterCombo" promptText="Select Type"/>
+                        </VBox>
+                        <Button fx:id="filterButton" text="Apply Filter" onAction="#applyFilter"/>
+                    </HBox>
+                    <Button fx:id="exportButton" text="Export to CSV" onAction="#exportToCSV" 
+                            style="-fx-max-width: 150;"/>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Transactions Table -->
+			<VBox spacing="10" alignment="CENTER">
+    			<Label text="Transactions" styleClass="label" style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+    			<TableView fx:id="transactionTable" VBox.vgrow="ALWAYS" maxWidth="900" maxHeight="400" 
+               style="-fx-border-color: #E0E0E0; -fx-border-width: 1; -fx-border-radius: 4;">
+       				<columns>
+            			<TableColumn fx:id="transIdColumn" text="Transaction ID" prefWidth="120"/>
+            			<TableColumn fx:id="accountIdColumn" text="Account ID" prefWidth="100"/>
+            			<TableColumn fx:id="typeColumn" text="Transaction Type" prefWidth="150"/>
+            			<TableColumn fx:id="amountColumn" text="Amount" prefWidth="100"/>
+            			<TableColumn fx:id="statementColumn" text="Statement" prefWidth="250"/>
+            			<TableColumn fx:id="dateColumn" text="Date" prefWidth="170"/>
+        			</columns>
+        		<placeholder>
+            		<Label text="No transactions to display" style="-fx-text-fill: #757575;"/>
+        		</placeholder>
+    		</TableView>
+		</VBox>
+        </VBox>
+    </content>
+</ScrollPane>

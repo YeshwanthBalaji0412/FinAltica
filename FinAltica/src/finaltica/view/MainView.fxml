@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finaltica.controller.MainController" stylesheets="@../styles.css">
+    <top>
+        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #1976D2; -fx-padding: 10;">
+            <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" 
+                style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" style="-fx-tab-min-width: 120; -fx-tab-max-width: 120; -fx-tab-min-height: 40;">
+            <tabs>
+                <Tab fx:id="homeTab" closable="false">
+                    <text>🏠 Home</text>
+                    <fx:include fx:id="homeView" source="HomeView.fxml"/>
+                </Tab>
+                <Tab fx:id="accountsTab" closable="false">
+                    <text>💼 Accounts</text>
+                    <fx:include fx:id="accountsView" source="AccountsView.fxml"/>
+                </Tab>
+                <Tab fx:id="incomesTab" closable="false">
+                    <text>💰 Incomes</text>
+                    <fx:include fx:id="incomesView" source="IncomesView.fxml"/>
+                </Tab>
+                <Tab fx:id="expensesTab" closable="false">
+                    <text>📉 Expenses</text>
+                    <fx:include fx:id="expensesView" source="ExpensesView.fxml"/>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="finaltica.controller.ExpensesController" stylesheets="@../styles.css">
+    <content>
+        <VBox spacing="20" style="-fx-padding: 20;" alignment="TOP_CENTER">
+            <!-- Header -->
+            <Label text="Add Expenses" styleClass="label" 
+                   style="-fx-font-size: 24px; -fx-text-fill: #1976D2;"/>
+            
+            <Label fx:id="notificationLabel" text="" styleClass="label" visible="false"/>
+            
+            <!-- Expense Form -->
+            <VBox spacing="20" styleClass="card" style="-fx-background-color: white; -fx-padding: 20; -fx-max-width: 800;">
+                <GridPane hgap="20" vgap="15" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150" />
+                    </columnConstraints>
+                    
+                    <!-- Row 0: Labels -->
+                    <Label text="Date" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label text="Account" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Category" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <Label text="Amount" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                    <Label text="Remark" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+                    
+                    <!-- Row 1: Form Fields -->
+                    <DatePicker fx:id="datePicker" GridPane.rowIndex="1" GridPane.columnIndex="0" maxWidth="Infinity"/>
+                    <ComboBox fx:id="accountCombo" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Select Account" maxWidth="Infinity"/>
+                    <ComboBox fx:id="categoryCombo" GridPane.rowIndex="1" GridPane.columnIndex="2" promptText="Select Category" maxWidth="Infinity"/>
+                    <TextField fx:id="amountField" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="Enter Amount" maxWidth="Infinity"/>
+                    <TextField fx:id="remarkField" GridPane.rowIndex="1" GridPane.columnIndex="4" promptText="Optional" maxWidth="Infinity"/>
+                    
+                    <!-- Row 2: New Category Label -->
+                    <Label text="New Category" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    
+                    <!-- Row 3: New Category Field and Button -->
+                    <TextField fx:id="newCategoryField" GridPane.rowIndex="3" GridPane.columnIndex="2" promptText="New Category" maxWidth="Infinity"/>
+                    <Button fx:id="addCategoryButton" text="Add Category" onAction="#addCategory" 
+                           GridPane.rowIndex="3" GridPane.columnIndex="3" maxWidth="150"/>
+                </GridPane>
+                
+                <HBox spacing="15" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                    <Button fx:id="addButton" text="Add Expense" onAction="#addExpense" 
+                           style="-fx-min-width: 120;"/>
+                    <Button fx:id="resetButton" text="Reset" onAction="#reset" 
+                           style="-fx-min-width: 120;"/>
+                    <Button fx:id="undoButton" text="Undo" onAction="#undo" 
+                           style="-fx-min-width: 120;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Filter Section -->
+            <TitledPane text="Filters" expanded="false" maxWidth="800">
+                <VBox spacing="15" style="-fx-padding: 10;">
+                    <HBox spacing="20" alignment="CENTER">
+                        <VBox spacing="5">
+                            <Label text="Filter by Date Range" styleClass="label"/>
+                            <HBox spacing="10">
+                                <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+                                <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+                            </HBox>
+                        </VBox>
+                        <Button fx:id="filterButton" text="Apply Filter" onAction="#applyFilter"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Expenses Table -->
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Expenses" styleClass="label" style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                <TableView fx:id="expensesTable" VBox.vgrow="ALWAYS" maxWidth="900" maxHeight="400" 
+                          style="-fx-border-color: #E0E0E0; -fx-border-width: 1; -fx-border-radius: 4;">
+                    <columns>
+                        <TableColumn fx:id="accountColumn" text="Account" prefWidth="150"/>
+                        <TableColumn fx:id="categoryColumn" text="Category" prefWidth="150"/>
+                        <TableColumn fx:id="amountColumn" text="Amount" prefWidth="150"/>
+                        <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="remarkColumn" text="Remark" prefWidth="290"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="No expenses to display" style="-fx-text-fill: #757575;"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

@@ -1,0 +1,54 @@
+INSTRUCTIONS TO RUN FinalTica:
+
+Database used: MySQL  
+External Libraries:
+  1. XChart (for chart generation)
+  2. MySQL Connector/J (for DB connection)
+
+1. Download the Project Zip File
+   - Open Eclipse and go to:
+     	File -> Import -> Existing Projects into Workspace -> Select the project root directory -> Finish
+
+2. Add External JARs to the Build Path
+   - Right-click the project > Build Path > Configure Build Path
+   - Go to the Libraries tab
+   - Click Add External JARs (import the jar files from the project zip file uploaded)
+	-> Add the following:
+       	- xchart-3.8.8.jar
+       	- mysql-connector-j-8.0.32.jar
+
+   - Click Apply and Close.
+
+3. For VM arguments (Run → Run Configurations → Arguments → VM Arguments), add:
+   
+     --add-modules javafx.controls,javafx.fxml
+
+   Check Dependencies 
+
+   -> Modulepath Entries 
+	- JavaFX SDK
+	- JavaFX
+   -> Classpath Entries
+	- FinAltica
+	- JRE System Library [JavaSE-22]
+	- xchart-3.8.8.jar 
+	- mysql-connector-J-9.1.0.jar
+
+    - Verify and then Click Apply.
+     
+4. Database Setup
+   - Open your MySQL Workbench or any MySQL client.
+   - Import the SQL file database.sql included in the project zip file.
+     This will create necessary tables and structure.
+
+5. Update Database Credentials
+   - Open finaltica.database.DatabaseHandler.java
+   - Modify the following constants as per your setup:
+
+     private static final String DB_URL = "jdbc:mysql://localhost:3306/finaltica_db";
+     private static final String USER = "your_username";
+     private static final String PASSWORD = "your_password";
+  
+
+6. Run the Application
+   - Right-click Main.java -> Run As -> Java Application

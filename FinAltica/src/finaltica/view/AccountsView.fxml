@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="finaltica.controller.AccountsController" stylesheets="@../styles.css">
+    <content>
+        <VBox spacing="20" style="-fx-padding: 20;" alignment="TOP_CENTER">
+            <!-- Header -->
+            <Label text="Manage Accounts" styleClass="label" 
+                   style="-fx-font-size: 24px; -fx-text-fill: #1976D2;"/>
+            
+            <Label fx:id="notificationLabel" text="" styleClass="label" visible="false"/>
+            
+            <!-- Account Management Controls -->
+            <HBox spacing="30" alignment="CENTER">
+                <!-- Create Account Section -->
+                <VBox spacing="10" styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-max-width: 350;">
+                    <Label text="Create Account" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="createAccountField" promptText="Account Name" prefWidth="200"/>
+                        <Button fx:id="createButton" text="Create Account" onAction="#createAccount"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Delete Account Section -->
+                <VBox spacing="10" styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-max-width: 350;">
+                    <Label text="Delete Account" styleClass="label" 
+                           style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <ComboBox fx:id="deleteAccountCombo" promptText="Select Account" prefWidth="200"/>
+                        <Button fx:id="deleteButton" text="Delete Account" onAction="#deleteAccount"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+            
+            <!-- Accounts Table -->
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Accounts" styleClass="label" style="-fx-font-size: 16px; -fx-text-fill: #1976D2;"/>
+                <TableView fx:id="accountsTable" VBox.vgrow="ALWAYS" maxWidth="700" maxHeight="400" 
+                           style="-fx-border-color: #E0E0E0; -fx-border-width: 1; -fx-border-radius: 4;">
+                    <columns>
+                        <TableColumn fx:id="accountNameColumn" text="Account Name" prefWidth="230"/>
+                        <TableColumn fx:id="balanceColumn" text="Current Balance" prefWidth="230"/>
+                        <TableColumn fx:id="totalExpensesColumn" text="Total Expenses" prefWidth="230"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

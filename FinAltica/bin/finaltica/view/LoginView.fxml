@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finaltica.controller.LoginController" stylesheets="@../styles.css">
+    <left>
+        <VBox alignment="CENTER" spacing="20" styleClass="sidebar" style="-fx-padding: 20;">
+            <Label text="FinAltica" styleClass="label" style="-fx-font-size: 42px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 50;">
+            <Label text="Login" styleClass="label" style="-fx-font-size: 24px; -fx-text-fill: #1976D2;"/>
+            <Label fx:id="notificationLabel" text="" styleClass="label" visible="false"/>
+            <VBox spacing="10">
+                <Label text="Username" styleClass="label"/>
+                <TextField fx:id="usernameField" promptText="Enter Username"/>
+            </VBox>
+            <VBox spacing="10">
+                <Label text="Password" styleClass="label"/>
+                <PasswordField fx:id="passwordField" promptText="Enter Password"/>
+            </VBox>
+            <Button fx:id="loginButton" text="Login" onAction="#handleLogin"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="I don't have an account" styleClass="label"/>
+                <Button fx:id="signUpButton" text="Sign Up" onAction="#handleSignUp"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
